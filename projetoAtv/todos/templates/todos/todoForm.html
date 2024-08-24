@@ -1,0 +1,25 @@
+{% extends './padrao.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block titulo %}
+  {{ titulo_pagina }}
+{% endblock %}
+
+
+{% comment %}o sistema de template do django não permite usar o mesmo bloco duas vezes{% endcomment %}
+{% block subtitulo %}
+  {{ titulo_pagina }}
+{% endblock %}
+
+
+{% block conteudo %}
+  <form method="POST">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <input type="submit" class="btn btn-success" value="ENVIAR" />
+    <button type="button" 
+            onclick="window.location.href='{% url 'todo_listar' %}'" 
+            class="btn btn-warning">Cancelar</button>
+  </form>
+{% endblock %}

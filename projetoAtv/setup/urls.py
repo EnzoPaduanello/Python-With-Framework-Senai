@@ -1,26 +1,12 @@
-"""
-URL configuration for setup project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.0/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
-from django.urls import path
-
-from todos.views import home
-
+from django.urls import include, path
+from todos.views import home, todoListarView, todoCriarView, todoAtualizarView, todoDeletarView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', home),
+    path("admin/", admin.site.urls),
+    path("", todoListarView.as_view(template_name="todos/todoListar.html"), name='todo_listar'),
+    path("cadastrar/", todoCriarView.as_view(template_name="todos/todoForm.html"), name='todo_criar'),
+    path("atualizar/<int:pk>", todoAtualizarView.as_view(template_name="todos/todoForm.html"), name='todo_atualizar'),
+    path("excluir/<int:pk>", todoDeletarView.as_view(), name='todo_excluir'),
+    path("__debug__/", include("debug_toolbar.urls")),
 ]
