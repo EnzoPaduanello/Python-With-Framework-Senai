@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='estacionamento',
             name='dtEntrada',
-            field=models.DateField(auto_now_add=True, default='2024-08-24 12:00:00', verbose_name='Data de Entrada'),
+            field=models.DateField(auto_now_add=True, verbose_name='Data de Entrada'),
             preserve_default=False,
         ),
         migrations.AddField(

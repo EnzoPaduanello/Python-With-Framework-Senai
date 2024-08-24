@@ -1,4 +1,4 @@
-{% extends './padrao.html' %}
+{% extends 'padrao.html' %}
 
 {% block titulo %}
   Listagem de Carros
@@ -39,7 +39,7 @@ Listagem de Carros no Estacionamento
                                     onclick="window.location.href='{% url 'todo_atualizar' pk=dadoCliente.pk %}'"
                                     class="btn btn-warning">Editar</button>
                             <button type="button"
-                                    onclick="window.location.href='{% url 'todo_excluir' pk=tarefa.pk %}'"
+                                    onclick="window.location.href='{% url 'todo_excluir' pk=dadoCliente.pk %}'"
                                     class="btn btn-danger">Excluir</button>
                             </div>
                           </td>

@@ -12,7 +12,7 @@ class todoListarView(ListView):
 
 class todoCriarView(CreateView):
     model = Estacionamento
-    fields = ["nomeCliente", "placaVeiculo", "tipoVeiculo","dtEntrada", "dtSaida"]
+    fields = ["nomeCliente", "placaVeiculo", "tipoVeiculo", "hrSaida"]
     success_url = reverse_lazy('todo_listar')
 
     def get_context_data(self, **kwargs):
@@ -22,7 +22,7 @@ class todoCriarView(CreateView):
 
 class todoAtualizarView(UpdateView):
     model = Estacionamento
-    fields = ["nomeCliente", "placaVeiculo", "tipoVeiculo","dtEntrada", "dtSaida"]
+    fields = ["nomeCliente", "placaVeiculo", "tipoVeiculo", "hrSaida"]
     success_url = reverse_lazy('todo_listar')
 
     def form_valid(self, form):
@@ -38,4 +38,4 @@ class todoAtualizarView(UpdateView):
 class todoDeletarView(DeleteView):
     model = Estacionamento
     success_url = reverse_lazy('todo_listar')
-    template_name = "todos/todo_confirm_delete.html"    
+    template_name = "todos/todoConfirmDelete.html"    
